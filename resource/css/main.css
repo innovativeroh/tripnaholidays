@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
 }
 body {
     background: var(--color-off-white);
@@ -12,4 +13,52 @@ body {
     margin-right: auto;
     margin-left: auto;
     width: 80%;
+}
+header {
+    padding: 20px;
+}
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flexContainer #logoArea img {
+    width: 75px;
+}
+.flexContainer nav a {
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--color-black);
+}
+.flexContainer nav a:hover {
+    text-decoration: underline;
+}
+.flexContainer nav #mainBtn {
+    background: var(--color-white);
+    padding: 5px 12px;
+    font-size: 13.5px;
+    color: var(--color-black);
+    font-weight: 600;
+    border: 1px solid var(--color-gray);
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+.flexContainer nav #whatsappBtn {
+    background: var(--color-black);
+    padding: 5px 12px;
+    font-size: 13.5px;
+    color: var(--color-white);
+    font-weight: 600;
+    border: 1px solid var(--color-black);
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+.flexContainer nav #mainBtn:hover,
+.flexContainer nav #whatsappBtn:hover {
+    background-color: var(--color-black);
+    color: var(--color-off-white);
 }

@@ -8,5 +8,6 @@
 </head>
 <body>
 
+<?php include_once("./core/footer.php");?>
 </body>
 </html>

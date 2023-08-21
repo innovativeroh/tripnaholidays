@@ -11,7 +11,7 @@
                 <a href='#'>Why Us</a>
                 <a href='#'>About Us</a>
                 <button id='mainBtn'>Login</button>
-                <button id='whatsappBtn'>Whatsapp</button>
+                <button id='whatsappBtn'><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
             </nav>
         </div>
     </header>
