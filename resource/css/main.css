@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,100;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap');
 @import url('root.css');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 body {
-    background: var(--color-off-white);
+    background: var(--color-white);
 }
 #wrapper {
     margin-right: auto;
@@ -15,12 +16,13 @@ body {
     width: 80%;
 }
 header {
-    padding: 20px;
+    padding: 20px 0px;
 }
 .flexContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
 }
 .flexContainer #logoArea img {
     width: 75px;
@@ -61,4 +63,100 @@ header {
 .flexContainer nav #whatsappBtn:hover {
     background-color: var(--color-black);
     color: var(--color-off-white);
+}
+.flexContainer #flex h1 {
+    font-size: 62px;
+    background: rgb(251,0,0);
+    background: linear-gradient(90deg, rgba(251,0,0,1) 0%, rgba(255,143,0,1) 100%);
+    font-weight: 800;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    line-height: 80px;
+}
+.flexContainer #flex h3 {
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 90px;
+}
+.flexContainer #flex .searchBox {
+    position: relative;
+}
+.flexContainer #flex .searchBox form input {
+    width: 100%;
+    padding: 18px 80px;
+    outline: none;
+    border-radius: 30px;
+    border: 1px solid var(--color-gray);
+    font-size: 14px;
+    font-family: 'DM Mono', monospace;
+}
+.flexContainer #flex .searchBox form #mainIcon {
+    position: absolute;
+    font-size: 20px;
+    top: 18px;
+    left: 30px;
+    color: var(--color-primary);
+}
+.flexContainer #flex .searchBox form button {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    border-radius: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-black);
+    background: var(--color-black);
+    color: var(--color-white);
+}
+.countryBtn a {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #000;
+    background: var(--color-off-white);
+    border: 1px solid var(--color-gray);
+    margin-top: 20px;
+    transition: all ease 300ms;
+}
+.countryBtn a:hover {
+    background: var(--color-white);
+}
+.howItWorks {
+    margin-top: 120px;
+}
+.howItWorks h1 {
+    font-size: 48px;
+}
+.howItWorks h3 {
+    font-size: 28px;
+    font-weight: 400;
+}
+.flexBoxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+}
+.flexBoxes #flex img {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.paddingBox {
+    padding: 20px;
+}
+.flexBoxes #flex h2 {
+    font-weight: 500;
+}
+.flexBoxes #flex hr {
+    width: 40px;
+    height: 2px;
+    border: 0 none;
+    background: #313866;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.flexBoxes #flex p {
+    font-weight: 400;
+    font-size: 18px;
 }
