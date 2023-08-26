@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get your tourist visa, quick and easy | Tripnaholidays</title>
 </head>
-<body style='background: #eee;'>
+<body style='background: #f1f1f1;'>
     <div id='extraWrapper'>
         <section class='dashboard'>
             <br><br>

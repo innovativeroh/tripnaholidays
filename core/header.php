@@ -6,7 +6,7 @@
     <header>
         <div class='flexContainer'>
             <div id="logoArea">
-                <img src='./resource/img/logo.png'>
+                <a href='index.php'><img src='./resource/img/logo.png'></a>
             </div>
             <nav>
                 <a href='#'>Why Us</a>

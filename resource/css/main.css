@@ -281,3 +281,50 @@ header {
     background:#0C356A;
     color:#CAEDFF;
 }
+.stepsArea {
+    margin-right: auto;
+    margin-left: auto;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    max-width: 1200px;
+    margin-top: 140px;
+}
+.stepVerificationFlex {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.innerStepFlex {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.travelCard {
+    display: flex;
+    gap: 10px;
+}
+.flexCardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.travelCard .continueBtn {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #071952;
+    background: #071952;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+.travelCard .continueBtn:hover {
+    background: #fff;
+    color: #071952;
+}
