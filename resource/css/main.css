@@ -414,3 +414,13 @@ header {
 .cardStack button:hover {
     background: #111 !important;
 }
+.errorMSG {
+    background: #F31559;
+    border: 1px solid #F31559;
+    font-size: 14px;
+    padding: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #fff !important;
+    border-radius: 4px;
+}

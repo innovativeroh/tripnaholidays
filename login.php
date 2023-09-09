@@ -16,6 +16,19 @@
                 <h1>Let’s get started</h1>
                 <p>Sign up/log in using your Email</p>
                 <?php
+
+
+                use PHPMailer\PHPMailer\PHPMailer;
+                use PHPMailer\PHPMailer\SMTP;
+                use PHPMailer\PHPMailer\Exception;
+
+                //Load Composer's autoloader
+                require 'vendor/autoload.php';
+
+                //Create an instance; passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+
+
                 //Connecting Input's With PHP Code
                 $email = @$_POST['email'];
                 $dateCreated = date('d-m-y');
@@ -46,8 +59,10 @@
                         $sql3 = "INSERT INTO `user_otp`(`id`, `connect`, `otp`, `expired`) VALUES (null,'$last_id','$otp_generation','0')";
                         $query3 = mysqli_query($conn, $sql3);
                         //End of Getting The User OTP
-                        
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php\">";
+                
+                        $otp_last_id = mysqli_insert_id($conn);
+
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php?id=$otp_last_id\">";
                         exit();
                     } else {
                         //Getting User ID From Database Cause It's Already Registered
@@ -60,18 +75,52 @@
                         //Generating 4 Digit OTP
                         $otp_generation = substr(str_shuffle("0123456789"), 0, 4);
                         //End Of Generation 4 Digit OTP
-                        
+                
                         //Cancelling All The Last Generated OTP
                         $sql4 = "UPDATE `user_otp` SET `expired`='1' WHERE `connect`='$last_id'";
                         $query4 = mysqli_query($conn, $sql4);
                         //End Of Cancelling The Last Generated OTP
-
+                
                         //Sending The User OTP To The Database
                         $sql3 = "INSERT INTO `user_otp`(`id`, `connect`, `otp`, `expired`) VALUES (null,'$last_id','$otp_generation','0')";
                         $query3 = mysqli_query($conn, $sql3);
                         //End of Getting The User OTP
+                
+                        $otp_last_id = mysqli_insert_id($conn);
 
-                        echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php\">";
+                        //Create an instance; passing `true` enables exceptions
+                        $mail = new PHPMailer(true);
+
+                        try {
+                            //Server settings
+                            // Server settings
+                            $mail->isSMTP();
+                            $mail->SMTPDebug = 0;
+                            $mail->Debugoutput = 'html';
+                            $mail->Host = 'mail.tripnaholidays.com';
+                            $mail->SMTPAuth = true;
+                            $mail->SMTPSecure = 'tls';
+                            $mail->Port = 587;
+                            $mail->Username = 'ops@tripnaholidays.com';
+                            $mail->Password = 'Reset2123';
+                            // Sender &amp; Recipient
+                            $mail->From = 'ops@tripnaholidays.com';
+                            $mail->FromName = 'Team Crowdbugs';
+                            $mail->addAddress($email);
+
+                            // Content
+                            $mail->isHTML(true);
+                            $mail->CharSet = 'UTF-8';
+                            $mail->Encoding = 'base64';
+                            $mail->Subject = '';
+                            $body = '';
+                            $mail->Body = $body;
+                            $mail->send();
+                        } catch (Exception $e) {
+                            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                        }
+
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php?id=$otp_last_id\">";
                         exit();
                     }
 
