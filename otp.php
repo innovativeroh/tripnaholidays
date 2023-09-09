@@ -10,15 +10,14 @@
 <div class='halfBack'>
 <br><div class='loginArea'>
         <center><img src='./resource/img/logo.png'><br><br>
-        <h1>Let’s get started</h1>
-        <p>Sign up/log in using your Email</p>
+        <h1>Enter OTP sent on</h1>
+        <p>sidhuroh@outlook.com <a href='otp.php' style='text-decoration: none; color: var(--color-primary);'>Change</a></p>
         <br>
         <form action='login.php' method='POST'>
-            <input type='email' name='email' placeholder='Email'>
-            <button type='submit'>Send OTP</button>
+            <input type='text' name='otp' style='font-size: 20px; text-align: center; letter-spacing: 5px;' placeholder='____'>
+            <button type='submit'>Submit</button>
         </form><br>
-        <p style='font-size: 13.5px;'>By logging in, you agree to our</p>
-        <a href='#' style='font-size: 13.5px; text-decoration: none; color: #555;'>Terms & Conditions</a>
-        </center>
+    </center>
+    <a href='#' style='text-decoration: none; color: var(--color-primary);'>Resent OTP</a>
     </div>
 </div>
