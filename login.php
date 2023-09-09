@@ -12,6 +12,9 @@
         <center><img src='./resource/img/logo.png'><br><br>
         <h1>Let’s get started</h1>
         <p>Sign up/log in using your Email</p>
+        <?php
+
+        ?>
         <br>
         <form action='login.php' method='POST'>
             <input type='email' name='email' placeholder='Email'>
