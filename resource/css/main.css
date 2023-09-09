@@ -365,3 +365,52 @@ header {
     font-size: 16px;
     transition: all ease 300ms;
 }
+.paymentFlexContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+.paymentFlexContainer #flexBox button {
+    background: transparent;
+    font-size: 20px;
+    border: 0 none;
+}
+.paymentFlexContainer #flexBox form .couponCodeInput {
+    padding: 10px;
+    border: 2px solid var(--color-gray);
+    font-size: 14px;
+    outline: none;
+    border-radius: 10px;
+}
+.paymentFlexContainer #flexBox form button {
+    padding: 10px;
+    font-size: 14px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 14px;
+    border-radius: 10px;
+}
+.calcFlexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cardStack {
+    background: var(--color-white);
+    border-radius: 10px;
+    padding: 40px 60px;
+}
+.cardStack button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #F6635C !important;
+    background: #F6635C !important;
+    font-weight: 500;
+    color: #fff;
+    font-size: 16px;
+    transition: all ease 300ms;
+}
+.cardStack button:hover {
+    background: #111 !important;
+}
