@@ -112,3 +112,4 @@
             </center>
         </div>
     </div>
+    <?php include_once("./core/footer.php"); ?>
