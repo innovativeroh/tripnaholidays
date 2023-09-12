@@ -21,9 +21,16 @@
                 <button type='submit'><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <div class='countryBtn'>
-            <a href='#'>United Arab Emirates</a>
-            <a href='#'>Spain</a>
-            <a href='#'>United States Of America</a>
+                <?php
+                    $sql = "SELECT * FROM `conifg_country` WHERE `active`='1'";
+                    $query = mysqli_query($conn, $sql);
+                    while($rows = mysqli_fetch_array($query)) {
+                        $countryID = $rows['id'];
+                        $countryName = $rows['country_name'];
+                        $symbolCode = $rows['symbol_code'];
+                        echo "<a href='country.php?id=$countryID'>$symbolCode $countryName</a>";
+                    }
+                ?>
         </div>
     </div>
 </div>
