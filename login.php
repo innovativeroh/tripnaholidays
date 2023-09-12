@@ -16,19 +16,7 @@
                 <h1>Let’s get started</h1>
                 <p>Sign up/log in using your Email</p>
                 <?php
-
-
-                use PHPMailer\PHPMailer\PHPMailer;
-                use PHPMailer\PHPMailer\SMTP;
-                use PHPMailer\PHPMailer\Exception;
-
-                //Load Composer's autoloader
-                require 'vendor/autoload.php';
-
-                //Create an instance; passing `true` enables exceptions
-                $mail = new PHPMailer(true);
-
-
+                include("./components/email_function.php");
                 //Connecting Input's With PHP Code
                 $email = @$_POST['email'];
                 $dateCreated = date('d-m-y');
@@ -62,6 +50,16 @@
                 
                         $otp_last_id = mysqli_insert_id($conn);
 
+                        sendEmail($email, "[Tripnaholidays] Please verify OTP", "Hey!<br><br>
+                        A sign in attempt requires further verification because we did not recognize your device. To complete the sign in, enter the verification code on the unrecognized device.
+                        <br><br>
+                        Device: <b>$otp_generation</b>
+                        <br><br>
+                        If you decide to enable two-factor authentication, ensure you retain access to one or more account recovery methods.
+                        <br><br>
+                        Thanks,
+                        The Tripnaholidays Team");
+
                         echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php?id=$otp_last_id\">";
                         exit();
                     } else {
@@ -88,37 +86,15 @@
                 
                         $otp_last_id = mysqli_insert_id($conn);
 
-                        //Create an instance; passing `true` enables exceptions
-                        $mail = new PHPMailer(true);
-
-                        try {
-                            //Server settings
-                            // Server settings
-                            $mail->isSMTP();
-                            $mail->SMTPDebug = 0;
-                            $mail->Debugoutput = 'html';
-                            $mail->Host = 'mail.tripnaholidays.com';
-                            $mail->SMTPAuth = true;
-                            $mail->SMTPSecure = 'tls';
-                            $mail->Port = 587;
-                            $mail->Username = 'ops@tripnaholidays.com';
-                            $mail->Password = 'Reset2123';
-                            // Sender &amp; Recipient
-                            $mail->From = 'ops@tripnaholidays.com';
-                            $mail->FromName = 'Team Crowdbugs';
-                            $mail->addAddress($email);
-
-                            // Content
-                            $mail->isHTML(true);
-                            $mail->CharSet = 'UTF-8';
-                            $mail->Encoding = 'base64';
-                            $mail->Subject = '';
-                            $body = '';
-                            $mail->Body = $body;
-                            $mail->send();
-                        } catch (Exception $e) {
-                            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                        }
+                        sendEmail($email, "[Tripnaholidays] Please verify OTP", "Hey!<br><br>
+                        A sign in attempt requires further verification because we did not recognize your device. To complete the sign in, enter the verification code on the unrecognized device.
+                        <br><br>
+                        Device: <b>$otp_generation</b>
+                        <br><br>
+                        If you decide to enable two-factor authentication, ensure you retain access to one or more account recovery methods.
+                        <br><br>
+                        Thanks,
+                        The Tripnaholidays Team");
 
                         echo "<meta http-equiv=\"refresh\" content=\"0; url=otp.php?id=$otp_last_id\">";
                         exit();
