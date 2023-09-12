@@ -51,15 +51,7 @@
                         $sql3 = "UPDATE `user_otp` SET `expired`='1' WHERE id='$varID'";
                         $query3 = mysqli_query($conn, $sql3);
                         //End Of Updating The Database
-                
-                        //Load Composer's autoloader
-                        require 'vendor/autoload.php';
-
-                        //Create an instance; passing `true` enables exceptions
-                        $mail = new PHPMailer(true);
-
-
-
+                        
                     } else {
                         $message = "<p class='errorMSG'>OTP is incorrect!</p>";
                     }
