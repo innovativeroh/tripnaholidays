@@ -1,4 +1,9 @@
-<?php include_once("./core/header.php"); ?>
+<?php include_once("./core/header.php");
+if (isset($_SESSION['username'])) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
