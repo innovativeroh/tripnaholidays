@@ -52,6 +52,21 @@
                         $query3 = mysqli_query($conn, $sql3);
                         //End Of Updating The Database
                         
+                        //Getting The User ID From Server
+                        $sql4 = "SELECT * FROM `users` WHERE `user_email`='$userEmail'";
+                        $query4 = mysqli_query($conn, $sql4);
+                        $rowss = mysqli_fetch_array($query4);
+                        $userId = $rowss['id'];
+                        //End Of Getting The User ID From Server
+
+                        //Updating Session with Login ID
+                        $_SESSION['id'] = $userId;
+                        $_SESSION['username'] = $userEmail;
+                        //End Of Session Updation
+
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
+                        exit();
+
                     } else {
                         $message = "<p class='errorMSG'>OTP is incorrect!</p>";
                     }
@@ -61,7 +76,7 @@
                     <?= $userEmail ?> <a href='login.php'
                         style='text-decoration: none; color: var(--color-primary);'>Change</a>
                 </p>
-                <?= $message ?>
+                <?= @$message ?>
                 <br>
                 <form action='otp.php?id=<?= $varID ?>' method='POST'>
                     <input type='text' name='otpVal' style='font-size: 20px; text-align: center; letter-spacing: 5px;'

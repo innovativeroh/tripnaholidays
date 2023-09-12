@@ -36,6 +36,6 @@ try {
     $body = $bodyMsg;
     $mail->Body = $body;
     $mail->send();
-}
+} catch (Exception $e) {}
 }
 ?>
