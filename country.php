@@ -117,7 +117,7 @@ $connectID = @$_GET['id'];
                                         ₹ $embassey_fees_75 (75+)</p>
                                     </div>
                                 </div>
-                                <button class='continueBtn'>Continue</button>
+                                <a href='addApplication.php?id=$id'><button class='continueBtn'>Continue</button></a>
                             </div>
                         </div>";
                     }

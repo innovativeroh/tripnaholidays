@@ -42,21 +42,49 @@
         <br>
         <div class='defaultApplication'>
             <div style='padding: 20px;'>
-                <p style='font-size: 18px; color: #555;'>Your draft applications (2)</p>
+            <?php
+                $sql = "SELECT * FROM `application_history` WHERE `user_to`='$global_user_id'";
+                $query = mysqli_query($conn, $sql);
+                $count_numRows = mysqli_num_rows($query);
+            ?>
+                <p style='font-size: 18px; color: #555;'>Your draft applications (<?=$count_numRows?>)</p>
             </div>
             <hr>
-            <div style='padding: 20px;'>
-                <div class='flexApplicationList'>
-                    <div id='flex' style='flex: 1;'>
-                        <p class='title'>United Arab Emirates(UAE)</p>
-                        <p class='code'>#rvxdg7</p>
+            <?php
+                $sql = "SELECT * FROM `application_history` WHERE `user_to`='$global_user_id'";
+                $query = mysqli_query($conn, $sql);
+                while($rows = mysqli_fetch_assoc($query)) {
+                    $ThisID1 = $rows['id'];
+                    $user_to = $rows['user_to'];
+                    $connect = $rows['connect'];
+                    $randCode = $rows['randCode'];
+                    $dateCount = $rows['dateCount'];
+                    
+                    $sql2 = "SELECT * FROM `config_list_charges` WHERE `id`='$connect'";
+                    $query2 = mysqli_query($conn, $sql2);
+                    $row = mysqli_fetch_assoc($query2);
+                    $ThisID2 = $row['connect'];
+                    $process_time = $row['process_time'];
+
+                    $sql3 = "SELECT * FROM `conifg_country` WHERE `id`='$ThisID2'";
+                    $query3 = mysqli_query($conn, $sql3);
+                    $ro = mysqli_fetch_assoc($query3);
+                    $countryName = $ro['country_name'];
+
+                    echo "<div style='padding: 20px;'>
+                    <div class='flexApplicationList'>
+                        <div id='flex' style='flex: 1;'>
+                            <p class='title'>$countryName</p>
+                            <p class='code' style='text-transform: lowercase;'>#$randCode</p>
+                        </div>
+                        <div id='flex' style='flex: 1;'>
+                            <button class='applicationBtn'>Resume Application</button>
+                            <div style='clear: both;'></div>
+                        </div>
                     </div>
-                    <div id='flex' style='flex: 1;'>
-                        <button class='applicationBtn'>Resume Application</button>
-                        <div style='clear: both;'></div>
-                    </div>
-                </div>
-            </div>
+                </div>";
+                }
+            ?>
         </div>
         <br><br>
         <div class='defaultApplication'>
