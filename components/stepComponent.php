@@ -1,7 +1,14 @@
+<?php
+    $sql = "SELECT * FROM `conifg_country` WHERE `id`='$connectID'";
+    $query = mysqli_query($conn, $sql);
+    while($rows = mysqli_fetch_assoc($query)) {
+        $symbol_code = $rows['symbol_code'];
+        $country_name = $rows['country_name'];
+    }
+?>
 <br><div class='stepsArea'>
     <div style='padding: 20px;'>
-                <p style='font-size: 18px; color: #555; font-weight: 600;'>Steps to get travel visa to United Kingdom (UK)</p>
-                
+                <p style='font-size: 18px; color: #555; font-weight: 600;'>Steps to get travel visa to <?=$country_name?> (<?=$symbol_code?>)</p>    
             </div>
             <hr style='background: #eee; border: 0 none; height: 1px;'>
             <div style='width: 90%; margin-right: auto; margin-left: auto;'>
