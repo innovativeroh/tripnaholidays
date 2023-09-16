@@ -18,6 +18,12 @@
             </div>
             <hr>
             <?php
+            $thisGET = @$_GET['id'];
+            $pre_sql = "SELECT * FROM `passports` WHERE conn='$thisGET' AND `status`='1'";
+            $pre_query = mysqli_query($conn, $pre_sql);
+            $preCheck = mysqli_num_rows($pre_query);
+            if($preCheck == "0") {
+                echo "This One!";
             if (isset($_POST['verifyPassport'])) {
                 $passNumber = @$_POST['passNumber'];
                 $name = @$_POST['name'];
@@ -33,30 +39,64 @@
                 $pincode = @$_POST['pincode'];
                 $mobile = @$_POST['mobile'];
                 $email = @$_POST['email'];
+                if($passNumber&&$name&&$sur_name&&$pobPassport&&$address1&&$city&$state&&$mobile&&$email) {
+                $sql = "INSERT INTO `passports`(`id`, `passport_number`, `name`, `surname`, `gender`, `date_of_birth`, `place_of_birth`, `pass_expiry_date`, `address_1`, `address_2`, `city`, `state`, `pincode`, `mobile`, `email`, `conn`, `status`) VALUES (null,'$passNumber','$name','$sur_name','$gender','$dob','$pobPassport','$exPassport','$address1','$address2','$city','$state','$pincode','$mobile','$email','$thisGET','1')";
+                $query = mysqli_query($conn, $sql);
+                
+                $sql2 = "UPDATE `application_history` SET `status`='1' WHERE id='$thisGET'";
+                $query2 = mysqli_query($conn, $sql2);
+
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=dashboard.php\">";
+                exit();
+                } else {
+                    echo "Input's Are Empty!";
+                }
             }
+        } else {
+            $GETSql = "SELECT * FROM `passports` WHERE `conn`='$thisGET'";
+            $GETquery = mysqli_query($conn, $GETSql);
+            while($rows = mysqli_fetch_array($GETquery)) {
+                $passNumber = $rows['passport_number'];
+                $name = $rows['name'];
+                $sur_name = $rows['surname'];
+                $gender = $rows['gender'];
+                $dob = $rows['date_of_birth'];
+                $pobPassport = $rows['place_of_birth'];
+                $exPassport = $rows['pass_expiry_date'];
+                $address1 = $rows['address_1'];
+                $address2 = $rows['address_2'];
+                $city = $rows['city'];
+                $state = $rows['state'];
+                $pincode = $rows['pincode'];
+                $mobile = $rows['mobile'];
+                $email = $rows['email'];
+            }
+        }
             ?>
             <div style='padding: 20px;'>
                 <div class='flexFormContainer'>
                     <div id='flexForm' style='flex: 1.4;'>
                         <p style='font-weight: 800; color: var(--color-dark-gray);'>Review 's basic details:</p>
-                        <form>
+                        <form action='application.php?id=<?=$thisGET;?>' method='POST'>
                             <br>
                             <div class='formFlex'>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Passport number</label><br>
                                     <input type='input' name='passNumber' class='input_size'
-                                        placeholder='Passport Number'>
+                                        placeholder='Passport Number' value='<?=@$passNumber?>'>
                                 </div>
                             </div>
                             <br>
                             <div class='formFlex'>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Given name (as on Passport)</label><br>
-                                    <input type='input' name='name' class='input_size' placeholder='Given name'>
+                                    <input type='input' name='name' class='input_size' placeholder='Given name'
+                                    value='<?=@$name?>'>
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Surname (as on Passport)</label><br>
-                                    <input type='input' name='surname' class='input_size' placeholder='Surname'>
+                                    <input type='input' name='surname' class='input_size' placeholder='Surname'
+                                    value='<?=@$sur_name?>'>
                                 </div>
                             </div>
                             <br>
@@ -71,7 +111,7 @@
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Date Of Birth</label><br>
-                                    <input type='date' name='dob' class='input_size'>
+                                    <input type='date' name='dob' class='input_size' value="<?php echo date('Y-m-d');?>">
                                 </div>
                             </div>
                             <br>
@@ -79,11 +119,11 @@
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Place of birth</label><br>
                                     <input type='input' name='pobPassport' class='input_size'
-                                        placeholder='Place of birth'>
+                                        placeholder='Place of birth' value="<?=@$pobPassport?>">
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Passport expiry date</label><br>
-                                    <input type='date' name='exPassport' class='input_size'>
+                                    <input type='date' name='exPassport' class='input_size' value="<?php echo date('Y-m-d');?>">
                                 </div>
                             </div>
                             <br><br>
@@ -95,26 +135,30 @@
                             <div class='formFlex'>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Address 1</label><br>
-                                    <input type='input' name='address1' class='input_size' placeholder='Address 1'>
+                                    <input type='input' name='address1' class='input_size' placeholder='Address 1' value='<?=@$address1?>'>
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Address 2</label><br>
-                                    <input type='input' name='address2' class='input_size' placeholder='Address 2'>
+                                    <input type='input' name='address2' class='input_size' placeholder='Address 2'
+                                    value='<?=@$address2?>'>
                                 </div>
                             </div>
                             <br>
                             <div class='formFlex'>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>City</label><br>
-                                    <input type='input' name='city' class='input_size' placeholder='City'>
+                                    <input type='input' name='city' class='input_size' placeholder='City'
+                                    value='<?=@$city?>'>
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
-                                    <label>Address 1</label><br>
-                                    <input type='input' name='state' class='input_size' placeholder='Select State'>
+                                    <label>State</label><br>
+                                    <input type='input' name='state' class='input_size' placeholder='Select State'
+                                    value='<?=@$state?>'>
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
-                                    <label>Address 2</label><br>
-                                    <input type='input' name='pincode' class='input_size' placeholder='Enter Pincode'>
+                                    <label>Pincode</label><br>
+                                    <input type='input' name='pincode' class='input_size' placeholder='Enter Pincode'
+                                    value='<?=@$pincode?>'>
                                 </div>
                             </div>
                             <br>
@@ -123,15 +167,27 @@
                             <div class='formFlex'>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Phone</label><br>
-                                    <input type='tel' name='mobile' class='input_size' placeholder='Mobile'>
+                                    <input type='tel' name='mobile' class='input_size' placeholder='Mobile'
+                                    value='<?=@$mobile?>'>
                                 </div>
                                 <div id='flexForm' style='flex: 1;'>
                                     <label>Email</label><br>
-                                    <input type='email' name='email' class='input_size' placeholder='Email'>
+                                    <input type='email' name='email' class='input_size' placeholder='Email'
+                                    value='<?=@$email?>'>
                                 </div>
                             </div><br>
+                            <?php
+                            if($preCheck == "0") {
+                                ?>
                             <button type="submit" name='verifyPassport' class="input_btn">Veify Traveller
                                 Details</button>
+                                <?php
+                            } else {
+                                ?>
+                                <a href='payment.php'><button type="button" class="input_btn">Complete Payment <i class="fa-solid fa-arrow-right"></i></button></a>
+<?php
+                            }
+                                ?>
                         </form>
                     </div>
                     <div id='flexForm' style='flex: 1;'>

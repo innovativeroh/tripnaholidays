@@ -25,7 +25,7 @@ $connect = $rows['connect'];
 
 $randomCode = generateRandomCode();
 
-$sql2 = "INSERT INTO `application_history`(`id`, `user_to`, `connect`, `randCode`, `dateCount`) VALUES (null,'$global_user_id','$thisID','$randomCode','$date')";
+$sql2 = "INSERT INTO `application_history`(`id`, `user_to`, `connect`, `randCode`, `dateCount`, `status`) VALUES (null,'$global_user_id','$thisID','$randomCode','$date','0')";
 $query2 = mysqli_query($conn, $sql2);
 }
 echo "<meta http-equiv=\"refresh\" content=\"0; url=dashboard.php\">";
