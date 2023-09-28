@@ -56,6 +56,7 @@
             $GETSql = "SELECT * FROM `passports` WHERE `conn`='$thisGET'";
             $GETquery = mysqli_query($conn, $GETSql);
             while($rows = mysqli_fetch_array($GETquery)) {
+                $passID = $rows['id'];
                 $passNumber = $rows['passport_number'];
                 $name = $rows['name'];
                 $sur_name = $rows['surname'];
@@ -80,7 +81,6 @@
             $GETSql3 = "SELECT * FROM `config_list_charges` WHERE `id`='$connect'";
             $GETquery3 = mysqli_query($conn, $GETSql3);
             $row = mysqli_fetch_array($GETquery3);
-            $paymentIDForce = $row['id'];
         }
             ?>
             <div style='padding: 20px;'>
@@ -194,7 +194,7 @@
                                 <?php
                             } else {
                                 ?>
-                                <a href='payment.php?id=<?=$paymentIDForce?>'><button type="button" class="input_btn">Complete Payment <i class="fa-solid fa-arrow-right"></i></button></a>
+                                <a href='payment.php?id=<?=$passID?>'><button type="button" class="input_btn">Complete Payment <i class="fa-solid fa-arrow-right"></i></button></a>
 <?php
                             }
                                 ?>
