@@ -10,6 +10,7 @@ $row = mysqli_fetch_assoc($query);
 $idPass = $row['id'];
 $namePass = $row['name'];
 $surnamePass = $row['surname'];
+$fullName = $namePass . " " . $surnamePass;
 $connPass = $row['conn'];
 //End Of Fetching Passport Details
 
@@ -49,123 +50,175 @@ $total = $result1 + $result2;
 </head>
 
 <body style='background: #f1f1f1;'>
-    <div class='halfBack'>
-        <br>
-        <div id='wrapper' style='margin-top: 180px;'>
-            <div class='paymentFlexContainer'>
-                <div id='flexBox' style='flex: 1;'>
-                    <div style='margin-top: 100px; padding: 20px;'>
-                        <a href='dashboard.php'><button><i class="fa-solid fa-arrow-left-long"></i></button></a><br>
-                        <h1 style='font-weight: 600;'>Complete your<br>payment</h1>
-                        <span>Payment summary:</span>
-                        <br><br>
-                        <form action='#' method='POST' style='display: flex; gap: 10px;'>
-                            <input type='text' name='code' placeholder='Apply coupon code' style='flex: 1;'
-                                class='couponCodeInput'>
-                            <button type='submit'>Apply</button>
-                        </form><br>
-                        <hr style='height: 1px; border: 0 none; background: #ccc;'>
-                        <br>
-                        <div class='calcFlexContainer'>
-                            <div id='flexBox'>
-                                <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Embassy & Appointment
-                                    fees</p>
-                                <p>₹
-                                    <?= $amount_per_traveller ?> for
-                                    <?= $country_name ?><br>
-                                    <?= $namePass . " " . $surnamePass ?>
-                                </p>
+        <div class='halfBack'>
+            <br>
+            <div id='wrapper' style='margin-top: 180px;'>
+                <div class='paymentFlexContainer'>
+                    <div id='flexBox' style='flex: 1;'>
+                        <div style='margin-top: 100px; padding: 20px;'>
+                            <a href='dashboard.php'><button><i class="fa-solid fa-arrow-left-long"></i></button></a><br>
+                            <h1 style='font-weight: 600;'>Complete your<br>payment</h1>
+                            <span>Payment summary:</span>
+                            <br><br>
+                            <form action='#' method='POST' style='display: flex; gap: 10px;'>
+                                <input type='text' name='code' placeholder='Apply coupon code' style='flex: 1;'
+                                    class='couponCodeInput'>
+                                <button type='submit'>Apply</button>
+                            </form><br>
+                            <hr style='height: 1px; border: 0 none; background: #ccc;'>
+                            <br>
+                            <div class='calcFlexContainer'>
+                                <div id='flexBox'>
+                                    <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Embassy &
+                                        Appointment
+                                        fees</p>
+                                    <p>₹
+                                        <?= $amount_per_traveller ?> for
+                                        <?= $country_name ?><br>
+                                        <?= $namePass . " " . $surnamePass ?>
+                                    </p>
+                                </div>
+                                <div id='flexBox'>
+                                    <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
+                                        <?= $amount_per_traveller ?>
+                                    </p>
+                                </div>
                             </div>
-                            <div id='flexBox'>
-                                <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
-                                    <?= $amount_per_traveller ?>
-                                </p>
+                            <br>
+                            <hr style='height: 1px; border: 0 none; background: #ccc;'>
+                            <br>
+                            <div class='calcFlexContainer'>
+                                <div id='flexBox'>
+                                    <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Teleport fee</p>
+                                    <p>₹599(per traveller) x 1</p>
+                                </div>
+                                <div id='flexBox'>
+                                    <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
+                                        <?= $our_fees ?>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <br>
-                        <hr style='height: 1px; border: 0 none; background: #ccc;'>
-                        <br>
-                        <div class='calcFlexContainer'>
-                            <div id='flexBox'>
-                                <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Teleport fee</p>
-                                <p>₹599(per traveller) x 1</p>
-                            </div>
-                            <div id='flexBox'>
-                                <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
-                                    <?= $our_fees ?>
-                                </p>
-                            </div>
-                        </div>
-                        <br>
-                        <hr style='height: 1px; border: 0 none; background: #ccc;'>
-                        <br>
-                        <div class='calcFlexContainer'>
-                            <div id='flexBox'>
-                                <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Grand total</p>
-                            </div>
-                            <div id='flexBox'>
-                                <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
-                                    <?= $total ?>
-                                </p>
+                            <br>
+                            <hr style='height: 1px; border: 0 none; background: #ccc;'>
+                            <br>
+                            <div class='calcFlexContainer'>
+                                <div id='flexBox'>
+                                    <p style='font-weight: 600; font-size: 18px; line-height: 30px;'>Grand total</p>
+                                </div>
+                                <div id='flexBox'>
+                                    <p style='text-align: right; font-size: 18px; font-weight: 500;'>₹
+                                        <?= $total ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id='flexBox' style='flex: 1;'>
-                    <div class='cardStack'>
-                        <center>
-                            <form action='#' method="POST">
-                                <h2 style='font-weight: 600;'>Pay only Teleport<br>fees now<h2>
-                                        <br>
-                                        <h1 style='font-size: 36px;'>₹599</h1><br>
-                                        <hr style='background: #eee; height: 1px; border: 0 none;'>
-                        </center>
-                        <br><br>
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Pay embassy fees later</p>
-                        <br>
+                    <div id='flexBox' style='flex: 1;'>
+                        <div class='cardStack'>
+                            <center>
+                                <form action='#' method="POST">
+                                    <h2 style='font-weight: 600;'>Pay only Teleport<br>fees now<h2>
+                                            <br>
+                                            <h1 style='font-size: 36px;'>₹599</h1><br>
+                                            <hr style='background: #eee; height: 1px; border: 0 none;'>
+                            </center>
+                            <br><br>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Pay embassy fees later</p>
+                            <br>
 
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Fully refundable, if you change your
-                            mind.</p>
-                        <br>
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Dedicated chat support.</p>
-                        <br><br>
-                        <button type='Submit'>Pay Now!</button>
-                        </form>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Fully refundable, if you change
+                                your
+                                mind.</p>
+                            <br>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Dedicated chat support.</p>
+                            <br><br>
+                            <button type='Submit'>Pay Now!</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div id='flexBox' style='flex: 1;'>
-                    <div class='cardStack'>
-                        <center>
-                            <form action='#' method="POST">
-                                <h2 style='font-weight: 600;'>Pay entire fees<br>now<h2>
-                                        <br>
-                                        <h1 style='font-size: 36px;'>₹
-                                            <?= $total ?>
-                                        </h1><br>
-                                        <hr style='background: #eee; height: 1px; border: 0 none;'>
-                        </center>
-                        <br><br>
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Pay nothing later</p>
-                        <br>
+                    <div id='flexBox' style='flex: 1;'>
+                        <div class='cardStack'>
+                            <center>
+                                <form action='#' method="POST">
+                                    <h2 style='font-weight: 600;'>Pay entire fees<br>now<h2>
+                                            <br>
+                                            <h1 style='font-size: 36px;'>₹
+                                                <?= $total ?>
+                                            </h1><br>
+                                            <hr style='background: #eee; height: 1px; border: 0 none;'>
+                            </center>
+                            <br><br>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Pay nothing later</p>
+                            <br>
 
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Fully refundable, before visa
-                            application submission</p>
-                        <br>
-                        <p style='font-size: 18px;'><i class="fa-solid fa-check"
-                                style='padding-right: 10px; color: #279EFF;'></i> Dedicated relationship manager</p>
-                        <br><br>
-                        <button type='Submit'>Pay Now!</button>
-                        </form>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Fully refundable, before visa
+                                application submission</p>
+                            <br>
+                            <p style='font-size: 18px;'><i class="fa-solid fa-check"
+                                    style='padding-right: 10px; color: #279EFF;'></i> Dedicated relationship manager</p>
+                            <br><br>
+
+                            <a href="javascript:void(0)" class="buy_now">
+                                <button type='button'>Pay Now!</button>
+                            </a>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <?php include_once("./core/footer.php"); ?>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var totalAmount = "100";
+            $('body').on('click', '.buy_now', function (e) {
+                var product_id = $(this).attr("data-id");
+                var options = {
+                    "key": "rzp_live_YMOwqFhTy2BxkY",
+                    "amount": (totalAmount * 100), // 2000 paise = INR 20
+                    "name": "Tripnaholidays",
+                    "description": "Pay Entire Fees Now!",
+                    "image": "./resource/img/logo.png",
+                    "prefill": {
+                        "name": "<?php echo $namePass ?>",
+                        "email": "<?php echo $global_user_email ?>",
+                        "contact": ""
+                    },
+                    "handler": function (response) {
+                        $.ajax({
+                            url: 'paymentAuth.php',
+                            type: 'post',
+                            dataType: 'json',
+                            data: {
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                totalAmount: "100",
+                                event_id: "10",
+                                user_id: "<?php echo $global_user_id ?>",
+                                user_name: "<?php echo $fullName ?>"
+                            },
+                            success: function () {
+                                window.location.href = 'index.php';
+                            },
+                            error: function () {
+                                window.location.href = 'index.php';
+                            }
+                        });
+                    },
+                    "theme": {
+                        "color": "#528FF0"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+                e.preventDefault();
+            });
+        </script>
+        <?php include_once("./core/footer.php"); ?>
 </body>
 <html>

@@ -12,15 +12,14 @@ $connectID = @$_GET['id'];
 
 <body style='background: #f1f1f1;'>
     <div class='halfBack'>
-        <?php include_once("./components/stepComponent.php"); ?>
+    <div style='padding: 20px;'>
+    <?php include_once("./components/stepComponent.php"); ?>
         <br><br>
         <div class='defaultApplication' style='max-width: 1200px; margin-right: auto;
     margin-left: auto;'>
             <div style='padding: 20px;'>
                 <p style='font-size: 18px; color: #555; font-weight: 600; display: inline;'>Select your visa type to
                     proceed</p>
-                <a href='#' style='float: right; text-decoration: none; color: #4477CE; padding: 5px;'><i
-                        class="fa-solid fa-circle-arrow-down"></i> Document Checklist</a>
             </div>
             <hr>
             <div style='padding: 10px; overflow-x: scroll;'>
@@ -119,7 +118,8 @@ $connectID = @$_GET['id'];
                                 </div>
                                 <a href='addApplication.php?id=$id'><button class='continueBtn'>Continue</button></a>
                             </div>
-                        </div>";
+                        </div>
+                        ";
                     }
                     ?>
                     <!-- END OF TRAVEL CARD -->

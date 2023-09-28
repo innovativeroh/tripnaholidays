@@ -7,7 +7,7 @@
     <title>Get your tourist visa, quick and easy | Tripnaholidays</title>
 </head>
 <body style='background: #f1f1f1;'>
-    <div id='extraWrapper'>
+    <div id='extraWrapper' style='padding: 20px;'>
         <section class='dashboard'>
             <br><br>
             <center><h3>Welcome to Teleport!</h3></center>

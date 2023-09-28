@@ -21,14 +21,14 @@
                             </div>
                             <div id='flex' style='flex: 2;'>
                             <p style='font-size: 12px; font-weight: 600;'>STEP 1</p>
-                            <p style='font-size: 12px; font-weight: 400;'>Complete your application on Teleport</p>
+                            <p style='font-size: 12px; font-weight: 400;'>Complete your application on Trip Na Holidays with Very Easier Step</p>
                             </div>
                             <div id='flex' style='flex: 1;'>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-right" style='float: right;'></i>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>              
                 <div id='flex' style='flex: 1;'>
                 <div style='padding: 20px 10px;'>
                         <div class='innerStepFlex'>
@@ -40,7 +40,7 @@
                             <p style='font-size: 12px; font-weight: 400;'>Our visa expert will review your application and help set up your appointment with VFS</p>
                             </div>
                             <div id='flex' style='flex: 1;'>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-right" style='float: right;'></i>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                             <p style='font-size: 12px; font-weight: 400;'>Submit your biometrics / documents at VFS on appointment day</p>
                             </div>
                             <div id='flex' style='flex: 1;'>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-right" style='float: right;'></i>
                             </div>
                         </div>
                     </div>
@@ -69,10 +69,10 @@
                             </div>
                             <div id='flex' style='flex: 2;'>
                             <p style='font-size: 12px; font-weight: 600;'>STEP 4</p>
-                            <p style='font-size: 12px; font-weight: 400;'>Get your passport with stamped visa </p>
+                            <p style='font-size: 12px; font-weight: 400;'>Get your passport with stamped visa and start living your dream</p>
                             </div>
                             <div id='flex' style='flex: 1;'>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <i class="fa-solid fa-arrow-right" style='float: right;'></i>
                             </div>
                         </div>
                     </div>

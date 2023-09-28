@@ -430,3 +430,91 @@ header {
     color: #fff !important;
     border-radius: 4px;
 }
+.mobView {
+    display: none;
+}
+nav {
+    display: block;
+}
+.navItems {
+    display: none;
+}
+@media (max-width: 1240px) {
+    nav {
+        display: none;
+    }
+    .navItems {
+        display: none;
+    }
+    .mobView {
+        display: block;
+    }
+    .mobView button {
+        padding: 10px;
+        border: 1px solid #fff;
+        font-size: 25px;
+        background: transparent;
+    }
+    .navItems {
+        background: #ffffff;
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .navItems a {
+        display: block;
+        text-decoration: none;
+        font-size: 16px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        color: #111;
+        padding: 10px;
+        color: #000;
+        transition: all ease 300ms;
+    }
+    .navItems a:focus {
+        background: var(--color-black);
+        background: #111;
+        color: #fff;
+    }
+    .navItems button {
+        width: 100%;
+        background: var(--color-black);
+        color: #fff;
+        border: 1px solid var(--color-black);
+        font-weight: 400;
+        padding: 10px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .flexBoxes {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    .flexBoxes #flex img {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .flexFormContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 40px;
+    }
+    .paymentFlexContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .stepVerificationFlex {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-direction: column;
+    }
+}
