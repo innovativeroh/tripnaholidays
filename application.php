@@ -70,7 +70,17 @@
                 $pincode = $rows['pincode'];
                 $mobile = $rows['mobile'];
                 $email = $rows['email'];
+                $paymentID = $rows['conn'];
             }
+            $GETSql2 = "SELECT * FROM `application_history` WHERE `id`='$paymentID'";
+            $GETquery2 = mysqli_query($conn, $GETSql2);
+            $row = mysqli_fetch_array($GETquery2);
+            $connect = $row['connect'];
+            
+            $GETSql3 = "SELECT * FROM `config_list_charges` WHERE `id`='$connect'";
+            $GETquery3 = mysqli_query($conn, $GETSql3);
+            $row = mysqli_fetch_array($GETquery3);
+            $paymentIDForce = $row['id'];
         }
             ?>
             <div style='padding: 20px;'>
@@ -184,7 +194,7 @@
                                 <?php
                             } else {
                                 ?>
-                                <a href='payment.php'><button type="button" class="input_btn">Complete Payment <i class="fa-solid fa-arrow-right"></i></button></a>
+                                <a href='payment.php?id=<?=$paymentIDForce?>'><button type="button" class="input_btn">Complete Payment <i class="fa-solid fa-arrow-right"></i></button></a>
 <?php
                             }
                                 ?>

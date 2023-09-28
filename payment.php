@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    $thisID = @$_GET['id'];
+?>
 <head>
     <?php include_once("./core/header.php"); ?>
     <meta charset="UTF-8">
