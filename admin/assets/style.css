@@ -13,7 +13,7 @@
 }
 
 .loginFormContainer {
-  width: 50%;
+  width: 35%;
 }
 
 .title_flex_box {
@@ -24,4 +24,77 @@
 
 .custom_link {
   text-decoration: underline;
+}
+
+.custom_login_button {
+  width: 100%;
+  background: #4256f7;
+  height: 45px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.custom_login_heading {
+  font-size: 28px;
+  font-weight: 800;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: #012970;
+}
+
+
+.custom_login_heading_gradient {
+  font-size: 28px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  background: rgb(251, 0, 0);
+  background: linear-gradient(90deg, rgba(251, 0, 0, 1) 0%, rgba(255, 143, 0, 1) 100%);
+  font-weight: 800;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.datatable-search {
+  display: none !important;
+}
+
+custom_table_row {
+  display: flex;
+  align-items: center !important;
+
+}
+
+.icon_column {
+  width: 10px !important;
+  height: 30px !important;
+  background: #ff4444 !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
+.icon_column i {
+  font-size: 20px;
+  color: #fff;
+  margin-inline: 10px;
+}
+
+.add_subadmin_container {
+  position: absolute;
+  top: 0;
+
+}
+
+.formshadowDiv {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #0000001d;
+}
+
+.pop_up_subadmin_add_form {
+  display: none;
 }

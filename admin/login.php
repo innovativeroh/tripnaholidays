@@ -66,9 +66,9 @@ if (isset($_POST['submit'])) {
 
 <body>
   <div class="MainContainer">
-    <div class="card loginFormContainer">
+    <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Login</h5>
+        <h5 class="custom_login_heading">Login to <span class="custom_login_heading_gradient">Tripna Holidays</span></h5>
         <form class="row g-3" method="post" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
           <div class="col-12">
             <label for="inputEmail4" class="form-label">Email</label>
@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
             <input type="password" name="password" class="form-control" id="inputPassword4" required>
           </div>
           <div class="text-center">
-            <button type="submit" name="submit" class="btn btn-primary">Login</button>
+            <button type="submit" name="submit" class="custom_login_button">Login</button>
           </div>
         </form>
       </div>

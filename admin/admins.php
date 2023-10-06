@@ -5,7 +5,7 @@ include('./db_connection.php');
 if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
   header('Location: ./login.php');
 } else {
-  $sql =  $connection->prepare('SELECT * FROM users');
+  $sql =  $connection->prepare('SELECT * FROM admin_users');
   $sql->execute();
   $result = $sql->get_result();
 }
@@ -52,7 +52,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
   <?php include('./header_sidebar.php') ?>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>User Tables</h1>
+      <h1>Admin Tables</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
@@ -67,7 +67,14 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
           <div class="card">
             <div class="card-body">
               <div class="title_flex_box">
-                <h5 class="card-title">Users</h5>
+                <h5 class="card-title">Admin</h5>
+                <?php
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+                  echo '<div class="title_flex_box" style="gap: 10px;">
+                  <a href="#" onclick="openForm()" class="custom_link">Create SubAdmin</a>
+                  </div>';
+                }
+                ?>
               </div>
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -82,19 +89,14 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                   <?php
                   if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                      $userEmail = $row['user_email'];
                       $userId = $row['id'];
+                      $userEmail = $row['email'];
                       $dateCreated = $row['date_created'];
                       echo '
                       <tr class="custom_table_row">
                         <th scope="row">' . $userId . '</th>
                         <td>' . $userEmail . '</td>
                         <td>' . $dateCreated . '</td>
-                        <td class="icon_column">
-                          <a href="./delete_user.php?userid=' . $userId . '">
-                          <i class="bi bi-trash"></i>
-                          </a>
-                        </td>
                       </tr>';
                     }
                   } ?>
@@ -110,6 +112,34 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
     </section>
 
   </main><!-- End #main -->
+  <div class="pop_up_subadmin_add_form">
+    <div class="formshadowDiv"></div>
+    <div class="MainContainer add_subadmin_container">
+      <div class="card loginFormContainer">
+        <div class="card-body">
+          <h5 class="card-title">Add Subadmin</h5>
+          <form class="row g-3" method="post" action="./add_subadmin.php">
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">User Email</label>
+              <input type="email" name="email" class="form-control" id="inputEmail4" required>
+            </div>
+            <div class="col-12">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="inputPassword4" required>
+            </div>
+            <div class="col-12">
+              <label for="inputPassword4" class="form-label">Comfirm Password</label>
+              <input type="password" name="confirmpassword" class="form-control" id="inputPassword4" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" name="submit" class="btn btn-primary">Add Subadmin</button>
+              <button type="button" class="btn btn-danger" onclick="closeForm()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -123,6 +153,16 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const Form = document.querySelector('.pop_up_subadmin_add_form');
+    const openForm = () => {
+      Form.style.display = 'none';
+    }
+    const closeForm = () => {
+      Form.style.display = 'block';
+    }
+  </script>
 
 </body>
 
