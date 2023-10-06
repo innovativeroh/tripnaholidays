@@ -32,11 +32,6 @@ if (isset($_POST['submit'])) {
     echo "<script>alert('No User Found With Specified Email, Please Try Again!')</script>";
   }
 }
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
