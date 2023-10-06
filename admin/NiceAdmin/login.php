@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['email'] = $row['email'];
       session_set_cookie_params(3600);
       session_start();
-      header('Location: ./tables-data.php');
+      header('Location: ./users.php');
     } else {
       echo "<script>alert('Invalid Credentials, Try Again!')</script>";
     }
