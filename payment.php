@@ -135,7 +135,7 @@ $total = $result1 + $result2;
                             <p style='font-size: 18px;'><i class="fa-solid fa-check"
                                     style='padding-right: 10px; color: #279EFF;'></i> Dedicated chat support.</p>
                             <br><br>
-                            <button type='Submit'>Pay Now!</button>
+                            <a href='success.php'><button type='button'>Pay Now!</button></a>
                             </form>
                         </div>
                     </div>
@@ -176,7 +176,7 @@ $total = $result1 + $result2;
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-            var totalAmount = "100";
+            var totalAmount = "<?=$total?>";
             $('body').on('click', '.buy_now', function (e) {
                 var product_id = $(this).attr("data-id");
                 var options = {
