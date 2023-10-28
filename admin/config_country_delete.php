@@ -6,7 +6,7 @@ include('./db_connection.php');
     $sql->bind_param('i', $userId);
     $sql->execute();
     if ($sql->affected_rows > 0) {
-      echo "<script>alert('User Deleted!')</script>";
+      echo "<script>alert('Country Deleted!')</script>";
       echo "<meta http-equiv=\"refresh\" content=\"0; url=config_country.php\">";
                         exit();
     } else {

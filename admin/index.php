@@ -52,6 +52,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
 <body>
 
   <?php include('./header_sidebar.php') ?>
+  
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Dashboard</h1>
@@ -117,6 +118,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
       </div>
     </section>
   </main><!-- End #main -->
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>

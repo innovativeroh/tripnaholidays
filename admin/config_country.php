@@ -19,7 +19,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <title>Country - Tripnaholiday Admin Panel</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -114,6 +114,46 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
         </div>
       </div>
     </section>
+    <?php
+                        if(isset($_POST['add_country'])) {
+                            $countryName = $_POST['country_name'];
+                            $insertion_sql = $connection->prepare('INSERT INTO conifg_country (country_name, symbol_code, active) VALUES (?, ?, ?)');
+                            $symbol = 0;
+                            $active = 1;
+                            $insertion_sql->bind_param('sii', $countryName, $symbol, $active);
+                            $insertion_sql->execute();
+        if ($insertion_sql->affected_rows > 0) {
+            echo "<meta http-equiv=\"refresh\" content=\"0; url=config_country.php\">";
+            exit();
+        } else {
+            echo "Not Working!";
+        }
+                        }
+                    ?>
+              <!-- Basic Modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                Add Country+
+              </button>
+              <div class="modal fade" id="basicModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Add Countries</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action='config_country.php' method='POST'>
+                    <div class="modal-body">
+                    <span>Country Name*</span>
+                    <input type="text" class="form-control" placeholder="eg. India" name="country_name" required="required">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" name="add_country" class="btn btn-primary">Add</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div><!-- End Basic Modal-->
 
   </main><!-- End #main -->
 
