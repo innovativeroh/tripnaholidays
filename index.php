@@ -17,7 +17,17 @@
         <div class='searchBox'>
             <form action='pack.php' method='GET'>
                 <i class="fa-brands fa-cc-visa" id="mainIcon"></i>
-                <input type='text' name='q' placeholder='Where to, captain?'>
+                <input list='browsers' name='q' placeholder='Where to, captain?' autocomplete="off">
+  <datalist id="browsers">
+    <?php
+                $sql = "SELECT * FROM `conifg_country` WHERE `active`='1'";
+                $query = mysqli_query($conn, $sql);
+                while($rows = mysqli_fetch_array($query)) {
+                    $countryName = $rows['country_name'];
+                    echo "<option value='$countryName'>$countryName</option>";
+                }
+    ?>
+  </datalist>
                 <button type='submit'><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <div class='countryBtn'>
