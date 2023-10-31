@@ -12,11 +12,11 @@
       <li class="nav-item dropdown">
       <li class="nav-item dropdown pe-3">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+          <span class="d-none d-md-block dropdown-toggle ps-2">User</span>
         </a><!-- End Profile Iamge Icon -->
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6>Kevin Anderson</h6>
+            <h6>User</h6>
           </li>
           <li>
             <hr class="dropdown-divider">
@@ -86,6 +86,9 @@
           </a>
           <a href="config_package.php">
             <i class="bi bi-circle"></i><span>Package</span>
+          </a>
+          <a href="config_document.php">
+            <i class="bi bi-circle"></i><span>Document Checklist</span>
           </a>
         </li>
         <!-- <li>
