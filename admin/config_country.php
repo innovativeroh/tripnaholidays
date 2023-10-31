@@ -74,6 +74,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Country</th>
+                    <th scope="col">Symbol</th>
                     <th scope="col">Active</th>
                   </tr>
                 </thead>
@@ -85,6 +86,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                         $userId++;
                         $id = $row['id'];
                         $countryName = $row['country_name'];
+                        $symbol_code = $row['symbol_code'];
                       $userActive = $row['active'];
                       if($userActive == "1") {
                         $valueActive = "Active";
@@ -95,6 +97,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                       <tr class="custom_table_row">
                         <th scope="row">' . $userId . '</th>
                         <td>' . $countryName . '</td>
+                        <td>' . $symbol_code . '</td>
                         <td>' . $valueActive . '</td>
                         <td class="icon_column">
                           <a href="./config_country_delete.php?id=' . $id . '">
@@ -117,10 +120,10 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
     <?php
                         if(isset($_POST['add_country'])) {
                             $countryName = $_POST['country_name'];
+                            $countrySymbol = $_POST['country_symbol'];
                             $insertion_sql = $connection->prepare('INSERT INTO conifg_country (country_name, symbol_code, active) VALUES (?, ?, ?)');
-                            $symbol = 0;
                             $active = 1;
-                            $insertion_sql->bind_param('sii', $countryName, $symbol, $active);
+                            $insertion_sql->bind_param('ssi', $countryName, $countrySymbol, $active);
                             $insertion_sql->execute();
         if ($insertion_sql->affected_rows > 0) {
             echo "<meta http-equiv=\"refresh\" content=\"0; url=config_country.php\">";
@@ -145,6 +148,9 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                     <div class="modal-body">
                     <span>Country Name*</span>
                     <input type="text" class="form-control" placeholder="eg. India" name="country_name" required="required">
+                    <br>
+                    <span>Country Symbol*</span>
+                    <input type="text" class="form-control" placeholder="🏁" name="country_symbol" required="required">
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
