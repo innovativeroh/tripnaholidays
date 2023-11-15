@@ -34,6 +34,11 @@ $connectID = @$_GET['id'];
                         $title = $rows['visa_type'];
                         $visa_type = $rows['title'];
                         $visa_structure = $rows['visa_structure'];
+                        if($visa_structure == "Business") {
+                            $visa_structure = "💼 Business";
+                        } else if($visa_structure == "Tourist")  {
+                            $visa_structure = "🌴 Tourist";
+                        }
                         $process_time = $rows['process_time'];
                         $stay_duration = $rows['stay_duration'];
                         $visa_validity = $rows['visa_validity'];
@@ -47,7 +52,7 @@ $connectID = @$_GET['id'];
                             <div style='padding: 20px;'>
                                 <div class='flexCardContainer'>
                                     <div id='flex' style='flex: 2;'>
-                                        <p style='font-size: 16px;'>$stay_duration | $title</p>
+                                        <p style='font-size: 16px; font-weight: 600;'>$stay_duration Days | $title</p>
                                         <p style='font-size: 13.5px;'>$title</p>
                                     </div>
                                     <div id='flex' style='flex: 1;'>
@@ -104,17 +109,6 @@ $connectID = @$_GET['id'];
                                     <div id='flex' style='flex: 1;'>
                                         <p style='font-size: 13.5px; font-weight: 600; text-align: right; color: #444;'>₹ $our_fees
     /- per traveller</p>
-                                    </div>
-                                </div>
-                                <hr style='height: 1px; border: 0 none; background: #eee; margin-bottom: 15px; margin-top: 15px;'>
-                                <div class='flexCardContainer'>
-                                    <div id='flex' style='flex: 1;'>
-                                        <span style='font-size: 13.5px; color: #555; font-weight: 500;'>Embassy fees: </span>
-                                    </div>
-                                    <div id='flex' style='flex: 1;'>
-                                        <p style='font-size: 11px; font-weight: 400; text-align: right; color: #444;'>₹ $embassey_fees_18 (0-18)<br>
-                                        ₹ $embassey_fees_18p (18-75)<br>
-                                        ₹ $embassey_fees_75 (75+)</p>
                                     </div>
                                 </div>
                                 <a href='addApplication.php?id=$id'><button class='continueBtn'>Continue</button></a>
