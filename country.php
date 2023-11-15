@@ -33,6 +33,7 @@ $connectID = @$_GET['id'];
                         $visa_type = $rows['visa_type'];
                         $title = $rows['visa_type'];
                         $visa_type = $rows['title'];
+                        $visa_structure = $rows['visa_structure'];
                         $process_time = $rows['process_time'];
                         $stay_duration = $rows['stay_duration'];
                         $visa_validity = $rows['visa_validity'];
@@ -50,7 +51,7 @@ $connectID = @$_GET['id'];
                                         <p style='font-size: 13.5px;'>$title</p>
                                     </div>
                                     <div id='flex' style='flex: 1;'>
-                                        <p style='text-align: right; font-weight: 600; background: #FFF3DA; padding: 10px; border-radius: 4px; color: #FD8D14; float: right;'>TOURIST</p>
+                                        <p style='text-align: right; font-weight: 600; background: #FFF3DA; padding: 10px; border-radius: 4px; color: #FD8D14; float: right; text-transform: uppercase;'>$visa_structure</p>
                                     </div>
                                 </div><br>
                                 <hr style='height: 1px; border: 0 none; background: #eee; margin-bottom: 15px;'>

@@ -62,6 +62,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Visa Type</th>
+                    <th scope="col">Visa Structure</th>
                     <th scope="col">Process Type</th>
                     <th scope="col">Stay Duration</th>
                     <th scope="col">Visa Validity</th>
@@ -79,6 +80,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                         $userId++;
                         $id = $row['id'];
                         $visa_type = $row['visa_type'];
+                        $visa_structure = $row['visa_structure'];
                         $process_time = $row['process_time'];
                         $stay_duration = $row['stay_duration'];
                         $visa_validity = $row['visa_validity'];
@@ -95,6 +97,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                         echo '<tr class="custom_table_row">
                         <th scope="row">' . $userId . '</th>
                         <td>'.$visa_type.'</td>
+                        <td>'.$visa_structure.'</td>
                         <td>'.$process_time.' Days</td>
                         <td>'.$stay_duration.' Days</td>
                         <td>'.$visa_validity.' Days</td>
@@ -140,6 +143,7 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                       if(isset($_POST["add_package"])) {
                         $pack_country = @$_POST['pack_country'];
                         $visa_type = @$_POST['visa_type'];
+                        $visa_structure = @$_POST['visa_structure'];
                         $process_time = @$_POST['process_time'];
                         $stay_duration = @$_POST['stay_duration'];
                         $visa_validity = @$_POST['visa_validity'];
@@ -147,19 +151,17 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                         $our_fees = @$_POST['our_fees'];
                         $embassey_fees = @$_POST['embassey_fees'];
                         $covid_insurance = @$_POST['covid_insurance'];
-                        $title = "null";
                         $embassey_fees_none = "0";
-                        $insertion_sql = $connection->prepare('INSERT INTO `config_list_charges`(`visa_type`, `title`, `process_time`, `stay_duration`, `visa_validity`, `amount_per_traveller`, `our_fees`, `embassey_fees_18`, `embassey_fees_18p`, `embassey_fees_75`, `covid_insurance`, `connect`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
-                        $insertion_sql->bind_param('ssssssssssss', $visa_type, $title, $process_time, $stay_duration, $visa_validity, $amount_per_traveller, $our_fees, $embassey_fees, $embassey_fees_none, $embassey_fees_none, $covid_insurance, $pack_country);
+                        $insertion_sql = $connection->prepare('INSERT INTO `config_list_charges`(`visa_type`, `visa_structure`, `title`, `process_time`, `stay_duration`, `visa_validity`, `amount_per_traveller`, `our_fees`, `embassey_fees_18`, `embassey_fees_18p`, `embassey_fees_75`, `covid_insurance`, `connect`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                        $insertion_sql->bind_param('sssssssssssss', $visa_type, $visa_structure, $visa_type, $process_time, $stay_duration, $visa_validity, $amount_per_traveller, $our_fees, $embassey_fees, $embassey_fees_none, $embassey_fees_none, $covid_insurance, $pack_country);
                         $insertion_sql->execute();
-    if ($insertion_sql->affected_rows > 0) {
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=config_package.php\">";
-        exit();
-    } else {
-        echo "Not Working!";
-    }
+                        if ($insertion_sql->affected_rows > 0) {
+                            echo "<meta http-equiv=\"refresh\" content=\"0; url=config_package.php\">";
+                            exit();
+                        } else {
+                            echo "Not Working!";
+                        }
                       }
-                      
                     ?>
 
               <div class="modal fade" id="basicModal" tabindex="-1">
@@ -189,10 +191,20 @@ if (!isset($_SESSION['logged_in']) && $_SESSION['logged_in'] !== true) {
                             }          
                         ?>
                     </select><br>
-                    <span>Visa Type*</span>
-                    <input type="text" class="form-control" placeholder="eVisa" name="visa_type">
+                    <span>Visa Structure*</span>
+                    <select name="visa_structure" class="form-control">
+                      <option value="Business">Business</option>
+                      <option value="Tourist">Tourist</option>        
+                    </select>
                     <br>
-                    <span>Process Time*</span>
+                    <span>Visa Type*</span>
+                    <select name="visa_type" class="form-control">
+                      <option value="Visa">Visa</option>        
+                      <option value="EVisa">E-Visa</option>
+                      <option value="Sticker">Sticker</option>
+                    </select>
+                    <br>
+                    <span>Process Time (Days)*</span>
                     <input type="number" class="form-control" placeholder="6 Days" name="process_time" value="1" min="1" max="90" required="required">
                     <br>
                     <span>Stay Duration*</span>

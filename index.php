@@ -38,7 +38,7 @@
                         $countryID = $rows['id'];
                         $countryName = $rows['country_name'];
                         $symbolCode = $rows['symbol_code'];
-                        echo "<a href='country.php?id=$countryID'>$symbolCode $countryName</a>";
+                        echo "<a href='country.php?id=$countryID' style='margin-right: 10px;'>$symbolCode $countryName</a>";
                     }
                 ?>
         </div>
