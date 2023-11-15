@@ -69,7 +69,7 @@ $connectID = @$_GET['id'];
                                         <span style='font-size: 13.5px; color: #555; font-weight: 500;'>Processing Time</span>
                                     </div>
                                     <div id='flex' style='flex: 1;'>
-                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$process_time</p>
+                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$process_time Days</p>
                                     </div>
                                 </div>
                                 <br>
@@ -78,7 +78,7 @@ $connectID = @$_GET['id'];
                                         <span style='font-size: 13.5px; color: #555; font-weight: 500;'>Stay duration</span>
                                     </div>
                                     <div id='flex' style='flex: 1;'>
-                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$stay_duration</p>
+                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$stay_duration Days</p>
                                     </div>
                                 </div>
                                 <br>
@@ -87,7 +87,7 @@ $connectID = @$_GET['id'];
                                         <span style='font-size: 13.5px; color: #555; font-weight: 500;'>Visa validity</span>
                                     </div>
                                     <div id='flex' style='flex: 1;'>
-                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$visa_validity</p>
+                                        <p style='font-size: 18px; font-weight: 600; text-align: right; color: #444;'>$visa_validity Days</p>
                                     </div>
                                 </div>
                                 <br>
