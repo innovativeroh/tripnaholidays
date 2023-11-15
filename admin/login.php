@@ -35,7 +35,6 @@ if (isset($_POST['submit'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -58,12 +57,9 @@ if (isset($_POST['submit'])) {
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-
   <!-- my style.css  -->
   <link rel="stylesheet" href="./assets/style.css">
 </head>
-
 <body>
   <div class="MainContainer">
     <div class="card">
@@ -85,8 +81,6 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
-
-
   <!-- Scripts -->
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -100,5 +94,4 @@ if (isset($_POST['submit'])) {
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 </body>
-
 </html>
